@@ -2,13 +2,13 @@
 layout: default
 title: Redlist
 nav_order: 0
-description: "Movie App for Users"
+description: "Eine Webanwendung, der Nutzer erlaubt ist Filme und Serien nach gefallen Links und Rechts einzuordnen."
 permalink: /
 ---
 
 # Redlist
 
-Movie App for Users
+Eine Webanwendung, der Nutzer erlaubt ist Filme und Serien nach gefallen Links und Rechts einzuordnen.
 
 ## Team members
 
