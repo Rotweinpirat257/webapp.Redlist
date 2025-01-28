@@ -1,5 +1,5 @@
 # webapp.Redlist
-Eine Webanwendung, der Nutzer erlaubt ist Filme und Serien nach gefallen Links und Rechts einzuordnen.
+Eine Webanwendung, der Nutzer erlaubt ist Filme nach mit einem "X" (Mag nicht) oder "Herz" (Mag ich)  einzuordnen.
 # RedList
 
 Mitglieder: Wladimir Evdokimov, Samed Sevinc
