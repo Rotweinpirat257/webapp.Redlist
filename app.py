@@ -97,3 +97,4 @@ def main():
             "cache": [],
             "current_page": current_user.last_page
         }
+
