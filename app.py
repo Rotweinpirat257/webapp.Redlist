@@ -97,4 +97,64 @@ def main():
             "cache": [],
             "current_page": current_user.last_page
         }
+if not user_movie_caches[user_id]["cache"]:
+        fetch_movies()
 
+    return render_template('Movie-Screen.html', user_id=current_user.id)
+
+@app.route('/fetch_movies', methods=['GET'])
+def fetch_movies():
+    user_id = current_user.id
+    user_cache = user_movie_caches.setdefault(user_id, {"cache": [], "current_page": current_user.last_page or 1})
+
+    refresh = request.args.get('refresh', default="false").lower() == "true"
+
+    if refresh:
+        user_cache["current_page"] += 1
+        if user_cache["current_page"] > 500: 
+            user_cache["current_page"] = 1
+    else:
+        page = request.args.get('page', default=user_cache["current_page"], type=int)
+        user_cache["current_page"] = page
+
+    user_cache["cache"] = tmdb.fetch_movie_page(page=user_cache["current_page"])
+
+    current_user.last_page = user_cache["current_page"]
+    db.session.commit()
+
+    return jsonify({
+        "message": f"Movies fetched successfully for page {user_cache['current_page']}",
+        "count": len(user_cache["cache"])
+    })
+
+@app.route('/get_movie', methods=['GET'])
+@login_required
+def get_movie():
+    user_id = current_user.id
+    user_cache = user_movie_caches.setdefault(user_id, {"cache": [], "current_page": current_user.last_page})
+
+    if not user_cache["cache"]:
+        user_cache["current_page"] += 1
+        if user_cache["current_page"] > 500:
+            user_cache["current_page"] = 1
+
+        user_cache["cache"] = tmdb.fetch_movie_page(page=user_cache["current_page"])
+
+        if not user_cache["cache"]:
+            return jsonify({"error": "No movies available even after refetching!"}), 404
+
+    movie = user_cache["cache"].pop()
+    movie_details = tmdb.fetch_movie_details(movie["id"])
+
+    runtime = movie_details.get("runtime", "N/A")
+    genres = [genre["name"] for genre in movie_details.get("genres", [])]
+
+    return jsonify({
+        "id": movie["id"],
+        "title": movie["original_title"],
+        "rating": movie["vote_average"],
+        "duration": runtime,
+        "genres": genres,
+        "release_date": movie["release_date"],
+        "poster_path": movie.get("poster_path", "")
+    })
