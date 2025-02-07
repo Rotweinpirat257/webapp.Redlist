@@ -256,3 +256,5 @@ def my_groups():
     for group in groups:
         name_1 = group.name.split("_")[0]
         name_2 = group.name.split("_")[1]
+
+
