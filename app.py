@@ -158,3 +158,101 @@ def get_movie():
         "release_date": movie["release_date"],
         "poster_path": movie.get("poster_path", "")
     })
+
+
+@app.route('/action', methods=['POST'])
+def action():
+    data = request.json
+    user_id = data.get('user_id')
+    movie_id = data.get('movie_id')
+    status = data.get('status')  
+
+    existing_match = Matches.query.filter_by(user_id=user_id, movie_id=movie_id).first()
+
+    if existing_match:
+        existing_match.status = status
+    else:
+        new_match = Matches(user_id=user_id, movie_id=movie_id, status=status)
+        db.session.add(new_match)
+
+    other_likes = Matches.query.filter(Matches.movie_id == movie_id, Matches.status == 'like', Matches.user_id != user_id).count()
+
+    if other_likes > 0 and status == 'like':
+        message = "Another user also likes this movie!"
+    else:
+        message = f"Movie {status} recorded successfully"
+
+    db.session.commit()
+    return jsonify({"message": message})
+
+@app.route('/matches', methods=['GET'])
+@login_required
+def liked_movies():
+    user_id = current_user.id
+
+    current_user_likes = (
+        db.session.query(
+            Matches.movie_id
+        )
+        .filter(Matches.user_id == user_id, Matches.status == 'like')
+        .distinct()
+        .all()
+    )
+
+    liked_movie_ids = [movie_id for (movie_id,) in current_user_likes]
+
+    movie_like_counts = (
+        db.session.query(
+            Matches.movie_id,
+            func.count(Matches.user_id).label('total_likes')
+        )
+        .filter(Matches.movie_id.in_(liked_movie_ids), Matches.status == 'like')
+        .group_by(Matches.movie_id)
+        .all()
+    )
+
+    # Build a response with movie details and like counts
+    movies_data = []
+    for movie_id, total_likes in movie_like_counts:
+        others_likes = total_likes - 1 if total_likes > 1 else 0
+
+        movie_details = tmdb.fetch_movie_details(movie_id)  
+        movies_data.append({
+            "id": movie_id,
+            "title": movie_details.get('title', 'Unknown'),
+            "poster_path": movie_details.get('poster_path', ''),
+            "others_likes": others_likes
+        })
+
+    return render_template('Match-Screen.html', movies=movies_data)
+
+
+
+@app.route('/movie/<int:movie_id>/likes', methods=['GET'])
+@login_required
+def movie_likes(movie_id):
+    movie = tmdb.fetch_movie_details(movie_id)  
+
+    liked_users = Matches.query.filter_by(movie_id=movie_id, status='like').all()
+    users_data = []
+    for match in liked_users:
+        if match.user_id == current_user.id:
+            continue
+
+        user = User.query.get(match.user_id)
+        if user:
+            users_data.append({
+                "username": user.username,
+                "user_id": user.id
+            })
+    return render_template('Likes-Screen.html', movie=movie, users=users_data)
+
+@app.route('/groups')
+@login_required
+def my_groups():
+    current_username = current_user.username
+
+    groups = current_user.groups
+    for group in groups:
+        name_1 = group.name.split("_")[0]
+        name_2 = group.name.split("_")[1]
