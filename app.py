@@ -258,3 +258,76 @@ def my_groups():
         name_2 = group.name.split("_")[1]
 
 
+ if name_1 == current_username:
+            group.name = group.name.split("_")[1] + "_Chat"
+        elif name_2 == current_username:
+            group.name = group.name.split("_")[0] + "_Chat"
+
+    return render_template('Group-Screen.html', groups=groups)
+
+@app.route('/create-group/<int:user_id>', methods=['GET'])
+@login_required
+def create_or_get_group(user_id):
+    target_user = User.query.get_or_404(user_id)
+
+    if target_user == current_user:
+        flash('You cannot create a group chat with yourself.', 'danger')
+        return redirect(url_for('my_groups'))
+
+    group_name = f"{target_user.username}_{current_user.username}_Chat"
+    group = Group.query.filter_by(name=group_name).first()
+    if not group:
+        # Create new group
+        group = Group(name=group_name)
+        group.users.append(current_user)
+        group.users.append(target_user)
+        db.session.add(group)
+        db.session.commit()
+        flash(f'Group chat with {target_user.username} created!', 'success')
+
+    return redirect(url_for('group', group_id=group.id))
+
+
+@app.route('/group/<int:group_id>', methods=['GET', 'POST'])
+@login_required
+def group(group_id):
+    group = Group.query.get_or_404(group_id)
+
+    if current_user not in group.users:
+        flash('You are not a member of this group.', 'danger')
+        return redirect(url_for('my_groups'))
+
+    if request.method == 'POST':
+        message_content = request.form.get('message', '').strip()
+        if message_content:
+            # save message
+            message = Message(content=message_content, user_id=current_user.id, group_id=group.id)
+            db.session.add(message)
+            db.session.commit()
+            flash('Message sent!', 'success')
+        else:
+            flash('Message cannot be empty.', 'danger')
+
+        return redirect(url_for('group', group_id=group_id))
+
+    messages = Message.query.filter_by(group_id=group.id).order_by(Message.timestamp.asc()).all()
+
+    #modify the group name
+    name_1 = group.name.split("_")[0]
+    name_2 = group.name.split("_")[1]
+    if name_1 == current_user.username:
+        group.name = group.name.split("_")[1] + "_Chat"
+    elif name_2 == current_user.username:
+        group.name = group.name.split("_")[0] + "_Chat"
+
+    return render_template('Group-Chat.html', group=group, messages=messages)
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
+
+if __name__ == '__main__':
+    with app.app_context():
+        db.create_all()  
+    app.run(debug=True)
