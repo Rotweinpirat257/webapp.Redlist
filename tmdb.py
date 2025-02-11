@@ -1,7 +1,7 @@
 import random
 import requests
 
-API_KEY = "3445dec33c121623831c35edc900c6ad"
+API_KEY = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzNDQ1ZGVjMzNjMTIxNjIzODMxYzM1ZWRjOTAwYzZhZCIsIm5iZiI6MTczNjg2NzE5NC4xMjcsInN1YiI6IjY3ODY3ZDdhMjI1NjAyM2RmZDRlOTc1NiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ._sKOX_egvO0vPr0rB4ArGv0sKbMb78sqf8wiTK0KCk4"
 
 def fetch_movie_page(page=1):
     """Fetch a specific page of movies from the TMDb API."""
