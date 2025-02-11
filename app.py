@@ -97,7 +97,8 @@ def main():
             "cache": [],
             "current_page": current_user.last_page
         }
-if not user_movie_caches[user_id]["cache"]:
+
+    if not user_movie_caches[user_id]["cache"]:
         fetch_movies()
 
     return render_template('Movie-Screen.html', user_id=current_user.id)
@@ -257,8 +258,7 @@ def my_groups():
         name_1 = group.name.split("_")[0]
         name_2 = group.name.split("_")[1]
 
-
- if name_1 == current_username:
+        if name_1 == current_username:
             group.name = group.name.split("_")[1] + "_Chat"
         elif name_2 == current_username:
             group.name = group.name.split("_")[0] + "_Chat"
