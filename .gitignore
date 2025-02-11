@@ -1,0 +1,35 @@
+# Python-Virtuelle Umgebung ignorieren
+venv/
+.venv/
+
+# Bytecode-Cache-Dateien ignorieren
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Log- und Debug-Dateien ignorieren
+*.log
+debug.log
+
+# VS Code spezifische Dateien ignorieren
+.vscode/
+
+# MacOS spezifische Dateien ignorieren
+.DS_Store
+
+# Linux spezifische Dateien ignorieren
+*.swp
+
+# Pip-Umgebungsdateien ignorieren
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Jupyter Notebook Checkpoints ignorieren
+.ipynb_checkpoints/
+
+# Python-Egg- und Distribution-Dateien ignorieren
+*.egg-info/
+*.egg
+dist/
+build/
