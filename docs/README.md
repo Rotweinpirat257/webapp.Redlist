@@ -5,12 +5,12 @@ Eine Webanwendung, der Nutzer erlaubt ist Filme nach mit einem "X" (Mag nicht) o
 Mitglieder: Wladimir Evdokimov, Samed Sevinc
 
 
-[Präsentation](webapp.Redlist/docs/Redlist.pdf)
+[Präsentation](webapp.Redlist/docs/RedList.pdf)
 
 
 
 ## Documentation 
-[https://rotweinpirat257.github.io/webapp.Redlist/]
+[https://rotweinpirat257.github.io/webapp.RedList/]
 
 ## Getting started 
 
