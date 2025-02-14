@@ -62,8 +62,9 @@ source venv/bin/activate
 ```
 ##  3. Abhängigkeiten installieren
 1. Stelle sicher, dass du die neueste Version von pip installiert hast:
-
+```bash
 pip install --upgrade pip
+```
 ### Install requierements:
 
 
