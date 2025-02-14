@@ -59,7 +59,8 @@ source venv/bin/activate
 
 ```
 ##  3. Abhängigkeiten installieren
-### Stelle sicher, dass du die neueste Version von pip installiert hast:
+1. Stelle sicher, dass du die neueste Version von pip installiert hast:
+
 pip install --upgrade pip
 ### Install requierements:
 
@@ -80,7 +81,9 @@ Flask init-db
 
 ```
 
-
+## 5. Projekt starten
+1. Stelle sicher, dass die virtuelle Umgebung aktiv ist.
+2. Starte die Anwendung: 
 ### Run Redlist
 
 ```bash
@@ -88,3 +91,4 @@ Flask init-db
 flask run
 
 ```
+3.Öffne http://127.0.0.1:5000/ im Webbrowser, um Redlist zu testen.
