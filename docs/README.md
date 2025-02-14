@@ -91,4 +91,4 @@ Flask init-db
 flask run
 
 ```
-3.Öffne http://127.0.0.1:5000/ im Webbrowser, um Redlist zu testen.
+3. Öffne http://127.0.0.1:5000/ im Webbrowser, um Redlist zu testen.
