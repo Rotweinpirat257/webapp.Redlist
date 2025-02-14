@@ -31,13 +31,13 @@ Diese Arbeit wurde selbständig und eigenhändig erstellt. Die den benutzten Que
 
 ## Getting started 
 
-1. Besuche das GitHub-Repository von Redlist.
+
+
+### 1. Clone Repo
+1. Besuche das GitHub-Repository von Redlist [https://github.com/Rotweinpirat257/webapp.Redlist].
 2. Kopiere die HTTPS-URL über den „Code“-Button.
 3. Öffne das Terminal und navigiere zum gewünschten Speicherort.
-4. Klone das Repository:  
-
-### Clone Repo
-[https://github.com/Rotweinpirat257/webapp.Redlist]
+4. Klone das Repository: 
 
 ### Clone repo
 
@@ -45,7 +45,11 @@ Diese Arbeit wurde selbständig und eigenhändig erstellt. Die den benutzten Que
 
 git clone {https://github.com/Rotweinpirat257/webapp.Redlist]
 ```
-### Create venv
+
+## 2. Virtuelle Umgebung einrichten
+
+
+###  Create venv:
 
 ```bash
 
@@ -54,8 +58,10 @@ source venv/bin/activate
 
 
 ```
+##  Abhängigkeiten installieren
 
-### Install requierements
+### Install requierements:
+
 
 ```bash
 
