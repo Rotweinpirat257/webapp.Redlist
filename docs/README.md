@@ -2,7 +2,7 @@
 
 **Kurs: Wi-Inf-M09-F02 Full-Stack Web Development 2024/2025**
 
-**Dozent: Herr Prof. Dr, Alexander Eck**
+**Dozent: Herr Prof. Dr. Alexander Eck**
 
 
 # **webapp.Redlist**
