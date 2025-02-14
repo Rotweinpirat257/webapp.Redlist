@@ -7,7 +7,7 @@ permalink: /sources/
 
 # Sources
 
-Nutzung von ChatGPT:
+### Nutzung von ChatGPT:
 
 ChatGPT war während der Entwicklung von Redlist eine wertvolle Unterstützung. Wir nutzten es zur Fehlersuche und -behebung, insbesondere bei Datenbankverbindungen und API-Integrationen. Es half uns, Fehlermeldungen besser zu verstehen und effizient Lösungen zu finden.
 
@@ -17,7 +17,7 @@ Ein weiterer Anwendungsbereich war die Verbesserung der Usability. ChatGPT gab u
 
 
 
-Weitere Quellen:
+### Weitere Quellen:
 1.	https://python-forum.io/thread-39439.html
 Erkenntnisse: Dieses Forum bietet umfassende Diskussionen zur Webentwicklung mit Python, insbesondere zu Frameworks wie Flask und Django. Es war hilfreich für die Best Practices im Umgang mit Flask und SQLAlchemy und unterstützte uns bei der Lösung einiger Backend-Herausforderungen.
 
