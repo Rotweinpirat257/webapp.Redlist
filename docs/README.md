@@ -30,10 +30,10 @@ Diese Arbeit wurde selbständig und eigenhändig erstellt. Die den benutzten Que
 
 
 ## Getting started 
+Hier finden Sie die einzelnen Schritte, wie Sie Redlist zum laufen bringen.
 
-
-
-### 1. Clone Repo
+## 1. GitHub Repository klonen
+###  Clone Repo
 1. Besuche das GitHub-Repository von Redlist [https://github.com/Rotweinpirat257/webapp.Redlist].
 2. Kopiere die HTTPS-URL über den „Code“-Button.
 3. Öffne das Terminal und navigiere zum gewünschten Speicherort.
@@ -58,8 +58,9 @@ source venv/bin/activate
 
 
 ```
-##  Abhängigkeiten installieren
-
+##  3. Abhängigkeiten installieren
+### Stelle sicher, dass du die neueste Version von pip installiert hast:
+pip install --upgrade pip
 ### Install requierements:
 
 
@@ -69,8 +70,9 @@ pip install -r requirements.txt
 
 
 ```
-
+## 4. Datenbank Initialisieren
 ### Initialized Database 
+
 
 In Terminal
 ```bash
