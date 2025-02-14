@@ -45,7 +45,9 @@ Hier finden Sie die einzelnen Schritte, wie Sie Redlist zum laufen bringen.
 
 git clone {https://github.com/Rotweinpirat257/webapp.Redlist]
 ```
-
+5.  Gehe in das geklonte Repository:
+   
+cd Redlist
 ## 2. Virtuelle Umgebung einrichten
 
 
