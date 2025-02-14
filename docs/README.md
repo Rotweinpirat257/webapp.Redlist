@@ -34,10 +34,10 @@ Hier finden Sie die einzelnen Schritte, wie Sie Redlist zum laufen bringen.
 
 ## 1. GitHub Repository klonen
 ###  Clone Repo
-1. Besuche das GitHub-Repository von Redlist [https://github.com/Rotweinpirat257/webapp.Redlist].
-2. Kopiere die HTTPS-URL über den „Code“-Button.
-3. Öffne das Terminal und navigiere zum gewünschten Speicherort.
-4. Klone das Repository: 
+1. Besuchen Sie das GitHub-Repository von Redlist [https://github.com/Rotweinpirat257/webapp.Redlist].
+2. Kopieren Sie die HTTPS-URL über den „Code“-Button.
+3. Öffnen Sie das Terminal und navigieren zum gewünschten Speicherort.
+4. Klonen Sie das Repository: 
 
 ### Clone repo
 
@@ -45,7 +45,7 @@ Hier finden Sie die einzelnen Schritte, wie Sie Redlist zum laufen bringen.
 
 git clone {https://github.com/Rotweinpirat257/webapp.Redlist]
 ```
-5.  Gehe in das geklonte Repository:
+5.  Gehen Sie in das geklonte Repository:
    
 cd Redlist
 ## 2. Virtuelle Umgebung einrichten
@@ -86,7 +86,7 @@ Flask init-db
 
 ## 5. Projekt starten
 1. Stelle Sie sicher, dass die virtuelle Umgebung aktiv ist.
-2. Starte die Anwendung: 
+2. Starte Sie die Anwendung: 
 ### Run Redlist
 
 ```bash
@@ -94,4 +94,4 @@ Flask init-db
 flask run
 
 ```
-3. Öffne http://127.0.0.1:5000/ im Webbrowser, um Redlist zu testen.
+3. Öffnen Sie http://127.0.0.1:5000/ im Webbrowser, um Redlist zu testen.
